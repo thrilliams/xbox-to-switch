@@ -13,20 +13,6 @@ from joycontrol.server import create_hid_server
 from joycontrol.controller_state import ControllerState, button_push, button_press, button_release
 
 from inputs import get_gamepad, get_key
-from threading import Thread
-
-import tkinter as tk
-from tkinter import filedialog
-
-root = tk.Tk()
-
-async def loadnfc(controller_state):
-    if controller_state.get_controller() == Controller.JOYCON_L:
-        raise ValueError('NFC content cannot be set for JOYCON_L')
-    path = filedialog.askopenfilename(filetypes=[("Amiibo Bin Files", "*.bin")])
-    print(path)
-
-button = tk.Button(root, text="Load NFC data", command=loadnfc)
 
 async def xbox(controller_state):
     # Handle controller inputs
